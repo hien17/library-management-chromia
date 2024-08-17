@@ -1,0 +1,31 @@
+query get_all_library() = library @ * { } ( 
+    id = .rowid,
+    .library_name,
+    city = .address.city,
+    street = .address.street,
+    postal_code = .address.postal_code 
+);
+
+query get_library_by_name(library_name: text) = library @ { library_name };
+
+query get_shelf_by_library_name(id: rowid) = shelf @ { .rowid == id };
+
+query get_book_by_title(title: text) = book @ { .title == title };
+
+query get_shelf_by_number(library, number: integer) = shelf @ { .library == library, .number == number };
+
+query get_all_shelves() = shelf @ * { } ( id = .rowid, library_name = .library.library_name, .number );
+
+query get_all_books() = book @ * { } ( id = .rowid, .title );
+
+query get_libraries_with_shelves() {
+    return (
+        l: library,
+        @outer s: shelf @ * {
+            s.library == l
+        }
+    ) @ * { } (
+        @group l.library_name,
+        @list shelves = s?.number
+    );
+}

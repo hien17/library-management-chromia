@@ -1,0 +1,24 @@
+entity library {
+    library_name: text;
+    key address;
+}
+
+entity address {
+    street: text;
+    city: text;
+    postal_code: text;
+}
+
+entity shelf {
+    // Shelf number
+    number: integer;    
+    // Many-to-one relationship with Library
+    index library;
+}
+
+entity book {
+    // Title of the book
+    title: text;
+    // Many-to-one relationship with Shelf
+    index shelf;
+}

@@ -1,0 +1,15 @@
+operation create_library(name: text, street: text, city: text, postal_code: text) {
+    val library_address = create address ( street, city, postal_code );
+    create library ( name, library_address );
+}
+
+operation create_shelf(number: integer, library_name: text) {
+    val library = get_library_by_name(library_name);
+    create shelf ( number, library );
+}
+
+operation create_book(title: text, library_name: text, shelf_number: integer) {
+    val library = get_library_by_name(library_name);
+    val shelf = get_shelf_by_number(library, shelf_number);
+    create book ( title, shelf );
+}
