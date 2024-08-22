@@ -68,11 +68,13 @@ chr query get_all_library
 ## Query from a blockchain with its rid and method name
 ```shell
 chr query --blockchain-rid <blockchain-rid> <query-name>
-
+```
 E.g.
+```shell
 chr query --blockchain-rid 2E5C798460AE0709930D95375F80049B22141E6C9E685DD49972AED01C3916F8 hello_world
 ```
 ## Query by curl
+E.g.
 ```shell
 curl -X GET 'localhost:7740/query/2E5C798460AE0709930D95375F80049B22141E6C9E685DD49972AED01C3916F8?type=hello_world'
 ```
