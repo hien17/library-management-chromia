@@ -1,0 +1,212 @@
+// chr query get_all_library
+// []
+
+// chr tx --await create_library "Lib1" "Str1" "City1" "PCode1" 
+// transaction with rid 3E3426D3F69501CB89C3DA37617FE35CC21976AD630C9755B1A18B53E6FB9974 was posted CONFIRMED
+
+// chr query get_all_library
+// [
+//   [
+//     "city": "City1",
+//     "id": 2,
+//     "library_name": "Lib1",
+//     "postal_code": "PCode1",
+//     "street": "Str1"
+//   ]
+// ]
+
+// chr tx --await create_shelf "1" "Lib1"
+// transaction with rid 1A20BA0C2C1127CF662A0C9F6E08B5D0ED5C6AA6C7D12B16B4D83956E6F4739C was posted CONFIRMED
+
+// chr tx --await create_shelf "2" "Lib1"
+// transaction with rid 960B6A2678114B9933125A8457C3CB419984B406B54326EF12AA493A76437DF8 was posted CONFIRMED
+
+// chr tx --await create_shelf "3" "Lib1"
+// transaction with rid F52BD5A183C14C6806E2E7B3F2863035C0BFFA4CD815D4B34061A04FCFEC46CC was posted CONFIRMED
+
+// chr tx --await create_library "Lib2" "Str1" "City1" "PCode1" 
+// transaction with rid 7906FDFAB07A5BD767BC20ACBA85334941E3D261B1A805BF7FA111BA1B89EE92 was posted CONFIRMED
+
+// chr tx --await create_shelf "1" "Lib2"
+// transaction with rid 294C2DDF0AED3BDC2386895B14C44E6081C01986862F2111496D937C88702068 was posted CONFIRMED
+
+// chr tx --await create_shelf "2" "Lib2"
+// transaction with rid F19853673B9628BA645AD7274234624908942CA81A5FB9E07206D3A45C07C754 was posted CONFIRMED
+
+// chr query get_all_library
+// [
+//   [
+//     "city": "City1",
+//     "id": 2,
+//     "library_name": "Lib1",
+//     "postal_code": "PCode1",
+//     "street": "Str1"
+//   ],
+//   [
+//     "city": "City1",
+//     "id": 7,
+//     "library_name": "Lib2",
+//     "postal_code": "PCode1",
+//     "street": "Str1"
+//   ]
+// ]
+
+// chr query get_all_shelves
+// [
+//   [
+//     "id": 3,
+//     "library_name": "Lib1",
+//     "number": 1
+//   ],
+//   [
+//     "id": 4,
+//     "library_name": "Lib1",
+//     "number": 2
+//   ],
+//   [
+//     "id": 5,
+//     "library_name": "Lib1",
+//     "number": 3
+//   ],
+//   [
+//     "id": 8,
+//     "library_name": "Lib2",
+//     "number": 1
+//   ],
+//   [
+//     "id": 9,
+//     "library_name": "Lib2",
+//     "number": 2
+//   ]
+// ]
+
+// chr query get_libraries_with_shelves
+// [
+//   [
+//     "library_name": "Lib1",
+//     "shelves": [
+//       1,
+//       2,
+//       3
+//     ]
+//   ],
+//   [
+//     "library_name": "Lib2",
+//     "shelves": [
+//       1,
+//       2
+//     ]
+//   ]
+// ]
+
+// chr tx --await create_book "Book1" "Lib1" "1"
+// transaction with rid 65C09E78E5E7EB424FCFB173C35FACFFE817751F1D174547AD5E435A910B7D1A was posted CONFIRMED
+
+// chr tx --await create_book "Book2" "Lib1" "1"
+// transaction with rid FC997E347B4B22C24C31FEB7D38A45E0BC539AB518F9740D78EE9633BB6F39C4 was posted CONFIRMED
+
+// chr tx --await create_book "Book3" "Lib1" "1"
+// transaction with rid 60CF52FBC88B9BF2A9E6B683B9558666EEEF91D5559D3442A8066503C9A98F71 was posted CONFIRMED
+
+// chr tx --await create_book "Book4" "Lib2" "1"
+// transaction with rid 40F03216938EF4408E94788935AD314CA1BF1C9E42A3FC450DAE03FBE09A44F4 was posted CONFIRMED
+
+// chr tx --await create_book "Book5" "Lib1" "2"
+// transaction with rid CC3463B62BDE3B19E00C664376DFC1D07FACA4776E8012026B49FA6FE61A99EF was posted CONFIRMED
+
+// chr tx --await create_book "Book5" "Lib1" "5"
+// Transaction Failed with code 200: [library_management:get_shelf_by_number(library_management/queries.rell:15)] Operation 'library_management:create_book' failed: No records found
+
+// chr tx --await create_author "
+// Nam" 
+
+// transaction with rid 487A8BE08D4FBCB31524898D00108DB84FE96F2818992FE14A795F36BB0EFB62 was posted CONFIRMED
+// chr tx --await create_author "
+// Bao" 
+// transaction with rid 2DEC371AA9F977F7FC4F65EA16F8B0B61ABB9D81CC46C4ACCA2AEE88ABB11B0C was posted CONFIRMED
+
+// chr tx --await create_book_author "Book1" "Nam"
+// transaction with rid 626E4096BB87EAC7427A0A8497138D1122DB4C25AA021E9819B654AE7DFEBDBB was posted CONFIRMED
+
+// chr tx --await create_book_author "Book4" "Bao"
+// transaction with rid DC1A021E9022984C0B03454AC5A2363C9ED3A30993833DA3BC8497D60040DE03 was posted CONFIRMED
+
+// chr tx --await create_member "Duc"
+// transaction with rid 90F9C0FEAA87C0ACE0FE4ED07B5C018D55FA6B4058FF2BB13FA646F48B7DADF7 was posted CONFIRMED
+
+// chr tx --await create_member "Huy"
+// transaction with rid F554B1CE34CD716AD05926A5AEEB6F5F39E1CE4E8F5491D56CC3C9CC95B3F5F9 was posted CONFIRMED
+
+// chr tx --await create_loan "Duc" "Book1"
+// transaction with rid 19BCF6550FA34E6F5547AA05B18E7737D552C596E75B003104D15DCD2E6AA1E6 was posted CONFIRMED
+
+// chr tx --await create_loan "Huy" "Book2"
+// transaction with rid 7CEFD52FFD34FB4FBE61678BE17AB2CE96741FA6D0B354C88380D32708EFD774 was posted CONFIRMED
+
+// chr query get_books_with_authors
+// [
+//   [
+//     "author_name": "Nam",
+//     "title": "Book1"
+//   ],
+//   [
+//     "author_name": "Bao",
+//     "title": "Book4"
+//   ]
+// ]
+
+// chr query get_all_books_with_authors
+// [
+//   [
+//     "author_id": 15,
+//     "book_id": 10
+//   ],
+//   [
+//     "author_id": 16,
+//     "book_id": 13
+//   ]
+// ]
+
+// chr query get_books_authors_libraries
+// [
+//   [
+//     "author_name": "Nam",
+//     "library_name": "Lib1",
+//     "title": "Book1"
+//   ],
+//   [
+//     "author_name": "Bao",
+//     "library_name": "Lib2",
+//     "title": "Book4"
+//   ]
+// ]
+
+// chr query get_members_with_loans
+// [
+//   [
+//     "member_name": "Duc",
+//     "title": "Book1"
+//   ],
+//   [
+//     "member_name": "Huy",
+//     "title": "Book2"
+//   ]
+// ]
+
+// chr query get_books_on_loans
+// [
+//   [
+//     "author_name": "Nam",
+//     "member_name": "Duc",
+//     "title": "Book1"
+//   ]
+// ]
+
+// chr query get_books_on_loans_
+// [
+//   [
+//     "Book1",
+//     "Duc",
+//     "Nam"
+//   ]
+// ]

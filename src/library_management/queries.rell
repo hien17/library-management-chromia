@@ -41,3 +41,47 @@ query get_member_by_name(name: text) = member @ { .member_name == name };
 query get_author_by_name(author_name: text) = author @ { .author_name == author_name };
 
 query get_all_books_with_authors() = book_author @* { } ( book_id = .book.rowid, author_id = .author.rowid );
+
+// Query to retrieve books along with their author using an inner join
+query get_books_with_authors() {
+    return ( book, book_author, author) @* {
+        book == book_author.book,
+        author == book_author.author
+    } ( book.title, author.author_name );
+}
+
+// Query to retrieve books, their authors, and the libraries they are located in
+query get_books_authors_libraries() {
+    return ( book, book_author, author, shelf, library) @* {
+        book == book_author.book,
+        author == book_author.author,
+        book.shelf == shelf,
+        shelf.library == library
+    } ( book.title, author.author_name, library.library_name );
+}
+
+// Query to retrieve members along with the books they have on loan using an inner join
+query get_members_with_loans() {
+    return ( member, loan, book) @* {
+        member == loan.member,
+        book == loan.book
+    } ( member.member_name, book.title );
+}
+
+// Query to retrieve books on loan along with the borrowing members and the authors of the book
+query get_books_on_loans() {
+    return ( book, loan, member, book_author, author) @* {
+        book == loan.book,
+        member == loan.member,
+        book == book_author.book,
+        author == book_author.author
+    } ( book.title, member.member_name, author.author_name );
+}
+
+// Query to retrieve books on loan along with borrowing members and the authors of the book
+// but only using inner join from 2 relationships table
+query get_books_on_loans_() {
+    return ( loan, book_author) @* {
+        loan.book == book_author.book,
+    } ( loan.book.title, loan.member.member_name, book_author.author.author_name );
+}
