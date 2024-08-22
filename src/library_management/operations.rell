@@ -13,3 +13,23 @@ operation create_book(title: text, library_name: text, shelf_number: integer) {
     val shelf = get_shelf_by_number(library, shelf_number);
     create book ( title, shelf );
 }
+
+operation create_author(authors_name: text) {
+    create author ( authors_name );
+}
+
+operation create_book_author(title: text, authors_name: text) {
+    val new_book = get_book_by_title(title);
+    val new_author = get_author_by_name(authors_name);
+    create book_author ( new_book, new_author );
+}
+
+operation create_member(name: text) {
+    create member ( name );
+}
+
+operation create_loan(member_name: text, book_title: text) {
+    val member = get_member_by_name(member_name);
+    val book = get_book_by_title(book_title);
+    create loan ( member, book );
+}

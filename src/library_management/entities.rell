@@ -22,3 +22,21 @@ entity book {
     // Many-to-one relationship with Shelf
     index shelf;
 }
+
+entity author {
+    key author_name: text;
+}
+
+entity book_author {
+    // Composite key to establish many-to-many relationship
+    key book, author;
+}
+
+entity member {
+    key member_name: text;
+}
+
+entity loan {
+    // Composite key to establish many-to-many relationship
+    key member, book;
+}
